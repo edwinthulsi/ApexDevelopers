@@ -5,8 +5,15 @@ using System.Web;
 
 namespace AppDev3Excel.Models
 {
-    public class StudentViewModel
+    public class StudentViewModel 
     {
+
+        public string StudentNo
+        {
+            get;
+            set;
+        }
+
         public string Name
         {
             get;

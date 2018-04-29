@@ -1,0 +1,110 @@
+﻿@model AppDev3Excel.Models.MailModel
+
+@{
+
+    ViewBag.Title = "Send Email";
+
+}
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        if ('@ViewBag.Message' == 'Sent') {
+
+            alert('Mail has been sent successfully');
+
+        }
+
+    });
+
+</script>
+
+<h2>Send Email</h2>
+
+<fieldset>
+
+    
+
+    @using (@Html.BeginForm("Index", "SendMail", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+
+    {
+
+        @Html.ValidationSummary()
+
+    <table>
+
+        <tr>
+
+            <td>
+                To:
+
+            </td>
+
+            <td>
+
+                @Html.TextBoxFor(m => m.To)
+
+            </td>
+
+        </tr>
+
+        <tr><td><br /></td></tr>
+
+        <tr>
+
+            <td>
+                Subject:
+
+            </td>
+
+            <td>
+
+                @Html.TextBoxFor(m => m.Subject)
+
+            </td>
+
+        </tr>
+
+        <tr><td><br /></td></tr>
+
+        <tr>
+
+            <td>
+                Attachment:
+
+            </td>
+
+            <td>
+
+                <input type="file" name="fileUploader" />
+
+            </td>
+
+        </tr>
+
+        <tr><td><br /></td></tr>
+
+        <tr>
+
+            <td>
+                Body:
+
+            </td>
+
+            <td>
+
+                @Html.TextAreaFor(m => m.Body)
+
+            </td>
+
+        </tr>
+        <tr><td><br /></td></tr>
+    </table>
+
+        <input type="submit" value="Send" />
+    }
+
+</fieldset>

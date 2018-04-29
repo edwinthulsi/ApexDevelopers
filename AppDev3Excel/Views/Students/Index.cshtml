@@ -1,4 +1,5 @@
 ﻿@model IList<AppDev3Excel.Models.StudentViewModel>
+       
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,64 +10,80 @@
 
     <br />
     <br />
-        <h2>
-            Export Data To Excel
-            
-        </h2>
-        @Html.ActionLink("Add New Student", "Create")
-        <table style="background-color: white; width: 100%;">
-            <tr>
-                <th style="border: 1px solid black; text-align: left; width: 20%; padding-left: 20px;">
-                    Name
-                </th>
-                <th style="border: 2px solid black; text-align: center; width: 20%">
-                    Surname
-                </th>
-                <th style="border: 2px solid black; text-align: center; width: 20%">
-                    Email
-                </th>
-                <th style="border: 2px solid black; text-align: center; width: 20%">
-                    telNo
-                </th>
-                <th style="border: 2px solid black; text-align: center; width: 20%">
-                    mobileNo
-                </th>
+    <h2>
+        Export Data To Excel
 
-                <th style="border: 2px solid black; text-align: center; width: 20%">
-                    isActive
-                </th>
-            </tr>
-            @foreach (var itm in Model)
-            {
+    </h2>
+    @Html.ActionLink("Add New Student", "Create")
+    
+    <table style="background-color: white; width: 100%;">
+        <tr>
 
-                <tr>
-                    <td style="padding-left: 20px;">
-                        @Html.DisplayFor(m => itm.Name)
-                    </td>
-                    <td style="padding-left: 20px;">
-                        @Html.DisplayFor(m => itm.Surname)
-                    </td>
-                    <td style="padding-left: 20px;">
-                        @Html.DisplayFor(m => itm.Email)
-                    </td>
-                    <td style="padding-left: 50px;">
-                        @Html.DisplayFor(m => itm.telNo)
-                    </td>
-                    <td style="padding-left: 50px;">
-                        @Html.DisplayFor(m => itm.mobileNo)
-                    </td>
-                    <td style="padding-left: 50px;">
-                        @Html.DisplayFor(m => itm.isActive)
-                    </td>
-                </tr>
-            }
+            <th style="border: 1px solid black; text-align: left; width: 20%; padding-left: 20px;">
+                StudentNo
+            </th>
+            <th style="border: 1px solid black; text-align: left; width: 20%; padding-left: 20px;">
+                Name
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                Surname
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                Email
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                telNo
+            </th>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                mobileNo
+            </th>
 
-            <tr>
-                <td colspan="4">
-                    <br />
-                    <br />
-                    <input type="submit" value="Export to Excel" class="button" />
-                </td>
-            </tr>
-        </table>
+            <th style="border: 2px solid black; text-align: center; width: 20%">
+                isActive
+            </th>
+        </tr>
+        @foreach (var itm in Model)
+    {
+
+        <tr>
+            <td style="padding-left: 20px;">
+                @Html.DisplayFor(m => itm.StudentNo)
+            </td>
+            <td style="padding-left: 20px;">
+                @Html.DisplayFor(m => itm.Name)
+            </td>
+            <td style="padding-left: 20px;">
+                @Html.DisplayFor(m => itm.Surname)
+            </td>
+            <td style="padding-left: 20px;">
+                @Html.DisplayFor(m => itm.Email)
+            </td>
+            <td style="padding-left: 50px;">
+                @Html.DisplayFor(m => itm.telNo)
+            </td>
+            <td style="padding-left: 50px;">
+                @Html.DisplayFor(m => itm.mobileNo)
+            </td>
+            <td style="padding-left: 50px;">
+                @Html.DisplayFor(m => itm.isActive)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = itm.StudentNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = itm.StudentNo })
+            </td>
+        </tr>
+}
+       
+        <tr>
+            <td colspan="4">
+                <br />
+                <br />
+                <input type="submit" value="Export to Excel" class="button" />
+                <br />
+                <br />
+                @Html.ActionLink("Email", "Index", "SendMail")
+
+            </td>
+        </tr>
+    </table>
 }

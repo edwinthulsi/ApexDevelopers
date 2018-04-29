@@ -23,6 +23,7 @@ namespace AppDev3Excel.Controllers
             var studentList = (from e in db.Students
                                select new StudentViewModel
                                {
+                                   StudentNo = e.StudentNo,
                                    Name = e.Name,
                                    Email = e.Email,
                                    Surname = e.Surname,
@@ -134,7 +135,7 @@ namespace AppDev3Excel.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Students.Find(id);
-            if (student == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
