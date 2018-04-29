@@ -157,6 +157,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804281300176_InitialCreate.cs" />
+    <Compile Include="Migrations\201804281300176_InitialCreate.Designer.cs">
+      <DependentUpon>201804281300176_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbAccessContext.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\Student.cs" />
@@ -191,6 +196,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804281300176_InitialCreate.resx">
+      <DependentUpon>201804281300176_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
