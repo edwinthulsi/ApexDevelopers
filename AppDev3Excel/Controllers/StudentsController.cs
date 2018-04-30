@@ -39,6 +39,32 @@ namespace AppDev3Excel.Controllers
             return View(this.GetStudentList());
         }
 
+        public ActionResult Search(string searchBy, string search)
+        {
+            if (searchBy == "Name")
+            {
+                var student = db.Students.Where((x => x.Name.Contains(search) && x.isActive == true || search == null));
+                return View(student.ToList());
+            }
+            else
+            {
+                if (searchBy == "Surname")
+                {
+                    var student = db.Students.Where((x => x.Surname.Contains(search) && x.isActive == true || search == null));
+                    return View(student.ToList());
+                }
+                else
+                {
+                    var student = db.Students.Where((x => x.StudentNo.Contains(search) && x.isActive == true || search == null));
+                    return View(student.ToList());
+
+                }
+
+
+            }
+        }
+
+
         public ActionResult ExportToExcel()
         {
             var gv = new GridView();
